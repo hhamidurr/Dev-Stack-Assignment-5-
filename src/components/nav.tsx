@@ -3,7 +3,7 @@ const Nav = () => {
     return (
         <div className=" p-6 border border-b-gray-100">
             <div className="container mx-auto flex justify-between items-center ">
-                <img src="/src/assets/logo-text.png" alt="" />
+                <img src="/src/assets/logo-text.png" alt="logo" />
                 <ul className="flex gap-10 items-center text-[#475569] font-medium text-[16px]">
                     <li className="text-[#DB2777]">Home</li>
                     <li>Technologies</li>
