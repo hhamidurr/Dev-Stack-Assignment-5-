@@ -4,7 +4,7 @@ const Banner = () => {
       <div className="container mx-auto py-20">
         <div className="flex items-center justify-between">
           <div>
-            <h1 className="text-7xl font-extrabold mb-8">
+            <h1 className="text-7xl font-extrabold mb-10">
               Build Your Ideal <br/>
               <span className="bg-linear-to-r from-[#FF5722] via-[#D81B7E] to-[#7C3AED] bg-clip-text text-transparent font-extrabold">
                 Development Stack

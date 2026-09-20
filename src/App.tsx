@@ -1,4 +1,6 @@
 import Banner from "./components/banner"
+import Footer from "./components/footer"
+import Main from "./components/main"
 import Nav from "./components/nav"
 
 function App() {
@@ -7,6 +9,8 @@ function App() {
     <>
       <Nav/>
       <Banner/>
+      <Main/>
+      <Footer/>
     </>
   )
 }
