@@ -8,10 +8,10 @@ interface selectedProps {
 }
 
 const Selected = ({ product, addProduct, setAddProduct }: selectedProps) => {
-  
+
   const handleDeleteProduct = (product: ProductType) => {
     const updatedProducts = addProduct.filter(
-      (item) => item.name !== product.name,
+      item => item.name !== product.name,
     );
     console.log(updatedProducts);
     setAddProduct(updatedProducts);
@@ -21,7 +21,7 @@ const Selected = ({ product, addProduct, setAddProduct }: selectedProps) => {
 
   return (
     <>
-      <div className="grid grid-cols-1 gap-4">
+      <div className="grid grid-cols-1 gap-4 mb-2">
         <div className="flex items-center justify-between gap-4 p-4 bg-gray-50 rounded-lg border border-gray-200">
           <div className="flex items-center gap-4">
             <div className="w-12 h-12 rounded-lg bg-linear-to-br from-pink-50 to-violet-50 flex items-center justify-center">

@@ -1,6 +1,6 @@
 import { TiStarFullOutline } from "react-icons/ti";
 import type { ProductType } from "../type";
-import { useState, type Dispatch, type SetStateAction } from "react";
+import { type Dispatch, type SetStateAction } from "react";
 import { Bounce, toast } from "react-toastify";
 
 interface CardProps {
@@ -9,11 +9,24 @@ interface CardProps {
   setAddProduct: Dispatch<SetStateAction<ProductType[]>>;
 }
 const Card = ({ product, addProduct, setAddProduct }: CardProps) => {
-  const [changeButton, setChangeButton] = useState(false);
 
-  const handleProducts = () => {
+  const isAdded = addProduct.some(
+  (item) => item.name === product.name
+);
+const handleProducts = () => {
+  if (isAdded) {
+    toast.error(`${product.name} is already added!`, {
+      position: "bottom-right",
+      autoClose: 5000,
+      hideProgressBar: false,
+      closeOnClick: false,
+      pauseOnHover: true,
+      draggable: true,
+      theme: "colored",
+      transition: Bounce,
+    });
+  } else {
     setAddProduct([...addProduct, product]);
-    setChangeButton(true);
 
     toast.success(`${product.name} added successfully!`, {
       position: "bottom-right",
@@ -22,11 +35,11 @@ const Card = ({ product, addProduct, setAddProduct }: CardProps) => {
       closeOnClick: false,
       pauseOnHover: true,
       draggable: true,
-      progress: undefined,
       theme: "colored",
       transition: Bounce,
     });
-  };
+  }
+};
   
 
   return (
@@ -74,11 +87,11 @@ const Card = ({ product, addProduct, setAddProduct }: CardProps) => {
 
           <div className="mt-6">
             <button
-              onClick={() => handleProducts()}
+              onClick={handleProducts}
               className={`btn btn-block border-none text-white bg-linear-to-r from-[#EC4899] to-[#8B5CF6] hover:opacity-90 shadow-md hover:shadow-lg transition-all duration-300`}
-              disabled={changeButton}
+              disabled={isAdded}
             >
-              {changeButton ? "Added" : "Add to Stack"}
+              {isAdded ? "Added" : "Add to Stack"}
             </button>
           </div>
         </div>

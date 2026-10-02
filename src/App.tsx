@@ -1,7 +1,7 @@
 import { Suspense, useState } from "react";
 import Banner from "./components/banner";
 import Footer from "./components/footer";
-import Main from "./components/main";
+import Main from "./components/mainContent";
 import Nav from "./components/nav";
 import type { ProductType } from "./type";
 import { ToastContainer } from "react-toastify";
