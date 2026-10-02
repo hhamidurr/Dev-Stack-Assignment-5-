@@ -1,14 +1,24 @@
+import type { Dispatch, SetStateAction } from "react";
+import type { ProductType } from "../type";
+import Selected from "./selectedCard";
 
-const RightSection = () => {
-  return (
-    <>
-      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 h-fit lg:sticky lg:top-24">
+interface selectedProps {
+  addProduct: ProductType[];
+  setAddProduct: Dispatch<SetStateAction<ProductType[]>>;
+}
+const RightSection = ({ addProduct, setAddProduct }: selectedProps) => {
+  
+  if (addProduct.length === 0) {
+    return (
+      <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 h-fit  lg:top-24">
         <div className="flex items-center justify-between mb-6">
           <div>
             <h3 className="text-xl font-bold text-gray-800">Your Stack</h3>
 
             <p className="text-sm text-gray-500 mt-1">
-              No technologies selected yet.
+              {addProduct.length === 0
+                ? "No technologies selected yet."
+                : `${addProduct.length} technology selected`}
             </p>
           </div>
 
@@ -16,7 +26,6 @@ const RightSection = () => {
             <span className="text-lg">🧰</span>
           </div>
         </div>
-
         <div className="flex flex-col items-center justify-center min-h-55 rounded-xl border border-dashed border-gray-300 bg-gray-50/70 text-center px-6">
           <div className="w-16 h-16 rounded-full bg-linear-to-br from-[#EC4899]/10 to-[#8B5CF6]/10 flex items-center justify-center mb-4">
             <span className="text-2xl">📦</span>
@@ -31,7 +40,37 @@ const RightSection = () => {
           </p>
         </div>
       </div>
-      ;
+    );
+  }
+
+  return (
+    <>
+    <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 h-fit  lg:top-24">
+        <div className="flex items-center justify-between mb-6">
+          <div>
+            <h3 className="text-xl font-bold text-gray-800">Your Stack</h3>
+
+            <p className="text-sm text-gray-500 mt-1">
+              {addProduct.length === 0
+                ? "No technologies selected yet."
+                : `${addProduct.length} technology selected`}
+            </p>
+          </div>
+
+          <div className="w-10 h-10 rounded-xl bg-linear-to-br from-[#EC4899]/10 to-[#8B5CF6]/10 flex items-center justify-center">
+            <span className="text-lg">🧰</span>
+          </div>
+        </div>
+        
+      {addProduct.map((product, index) => (
+        <Selected
+          key={index}
+          product={product}
+          addProduct={addProduct}
+          setAddProduct={setAddProduct}
+        />
+      ))}
+      </div>
     </>
   );
 };

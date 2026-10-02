@@ -1,8 +1,17 @@
-
+import { use, useState } from "react";
+import type { ProductType } from "../type";
 import LeftSection from "./left-sec";
 import RightSection from "./right-sec";
 
-const Main = () => {
+interface PromiseType {
+  productPromise: Promise<ProductType[]>;
+}
+
+const Main = ({ productPromise }: PromiseType) => {
+  const products = use(productPromise);
+
+  const [addProduct, setAddProduct] = useState<ProductType[]>([]);
+  console.log(addProduct);
   return (
     <div>
       <div className="container mx-auto">
@@ -13,9 +22,14 @@ const Main = () => {
           Pick one technology per category to build your ideal stack.
         </p>
         <div className="grid grid-cols-1 lg:grid-cols-[3fr_1fr] gap-6">
-          {/* Left - Technology Cards */}
-            <LeftSection/>
-            <RightSection/>
+          {/* left side section */}
+          <LeftSection
+            products={products}
+            addProduct={addProduct}
+            setAddProduct={setAddProduct}
+          />
+          {/* right side section */}
+          <RightSection addProduct={addProduct} setAddProduct={setAddProduct} />
         </div>
       </div>
     </div>
