@@ -7,7 +7,7 @@ interface selectedProps {
   setAddProduct: Dispatch<SetStateAction<ProductType[]>>;
 }
 const RightSection = ({ addProduct, setAddProduct }: selectedProps) => {
-  
+
   if (addProduct.length === 0) {
     return (
       <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 h-fit  lg:top-24">
@@ -43,6 +43,13 @@ const RightSection = ({ addProduct, setAddProduct }: selectedProps) => {
     );
   }
 
+
+  const handleDeleteAll = () => {
+    if (addProduct.length > 0) {
+      setAddProduct([]);
+    }
+  };
+
   return (
     <>
     <div className="bg-white rounded-2xl border border-gray-200 shadow-sm p-6 h-fit  lg:top-24">
@@ -70,7 +77,11 @@ const RightSection = ({ addProduct, setAddProduct }: selectedProps) => {
           setAddProduct={setAddProduct}
         />
       ))}
-      </div>
+
+      <button onClick={handleDeleteAll} className="btn btn-block border-none text-white bg-linear-to-r from-[#EC4899] to-[#8B5CF6] hover:opacity-90 shadow-md hover:shadow-lg transition-all duration-300 mt-4">
+        Remove All
+      </button>
+    </div>
     </>
   );
 };

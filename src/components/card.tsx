@@ -89,7 +89,7 @@ const handleProducts = () => {
             <button
               onClick={handleProducts}
               className={`btn btn-block border-none text-white bg-linear-to-r from-[#EC4899] to-[#8B5CF6] hover:opacity-90 shadow-md hover:shadow-lg transition-all duration-300`}
-              disabled={isAdded}
+              // disabled={isAdded}
             >
               {isAdded ? "Added" : "Add to Stack"}
             </button>
